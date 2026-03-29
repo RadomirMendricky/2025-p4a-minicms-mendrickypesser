@@ -24,19 +24,22 @@ export default function CookieConsent() {
     setConsent('denied');
   };
 
+  useEffect(() => {
+    if (hasConsent && typeof window !== 'undefined') {
+      const clarityId = process.env.NEXT_PUBLIC_CLARITY_ID;
+      if (clarityId && clarityId !== 'sem_vlozte_vas_id') {
+        import('@microsoft/clarity').then((ClarityModule) => {
+          const clarity = ClarityModule.default;
+          if (clarity && typeof clarity.init === 'function') {
+            clarity.init(clarityId);
+          }
+        });
+      }
+    }
+  }, [hasConsent]);
+
   return (
     <>
-      {hasConsent && (
-        <Script id="ms-clarity" strategy="afterInteractive">
-          {`
-            (function(c,l,a,r,i,t,y){
-                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-            })(window, document, "clarity", "script", "TEST_CLARITY_ID_123");
-          `}
-        </Script>
-      )}
 
       {showBanner && (
         <div className="fixed-bottom text-white shadow-lg z-3 cookie-consent">
