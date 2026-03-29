@@ -1,5 +1,7 @@
 import { PrismaClient } from "@prisma/client"
 import { PrismaLibSql } from "@prisma/adapter-libsql"
+import { PrismaPg } from "@prisma/adapter-pg"
+import { Pool } from "pg"
 import bcrypt from "bcryptjs"
 import * as dotenv from "dotenv"
 import { readFileSync } from "fs"
@@ -7,10 +9,17 @@ import { join } from "path"
 
 dotenv.config()
 
-const adapter = new PrismaLibSql({
-  url: process.env.DATABASE_URL || "file:./dev.db",
-})
-const prisma = new PrismaClient({ adapter })
+const url = process.env.DATABASE_URL || "file:./dev.db"
+let prisma: PrismaClient
+
+if (url.startsWith("file:") || url.startsWith("libsql:")) {
+  const adapter = new PrismaLibSql({ url })
+  prisma = new PrismaClient({ adapter })
+} else {
+  const pool = new Pool({ connectionString: url, ssl: true })
+  const adapter = new PrismaPg(pool)
+  prisma = new PrismaClient({ adapter })
+}
 
 function generateSlug(title: string): string {
   return title

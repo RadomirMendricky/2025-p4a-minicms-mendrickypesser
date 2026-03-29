@@ -1,0 +1,23 @@
+[dotenv@17.3.1] injecting env (6) from .env -- tip: ­čŤí´ŞĆ auth for agents: https://vestauth.com
+C:\Users\Rad3k_m\Source\Repos\2025-p4a-minicms-mendrickypesser\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:378
+          throw new PrismaClientInitializationError(
+                ^
+
+
+PrismaClientInitializationError: The Driver Adapter `@prisma/adapter-pg`, based on `postgres`, is not compatible with the provider `sqlite` specified in the Prisma schema.
+    at new t (C:\Users\Rad3k_m\Source\Repos\2025-p4a-minicms-mendrickypesser\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:378:17)
+    at bcrypt (C:\Users\Rad3k_m\Source\Repos\2025-p4a-minicms-mendrickypesser\prisma\seed.ts:21:12)
+    at Object.<anonymous> (C:\Users\Rad3k_m\Source\Repos\2025-p4a-minicms-mendrickypesser\prisma\seed.ts:269:4)
+    at Module._compile (node:internal/modules/cjs/loader:1706:14)
+    at Object.transformer (C:\Users\Rad3k_m\AppData\Local\npm-cache\_npx\fd45a72a545557e9\node_modules\tsx\dist\register-D46fvsV_.cjs:3:1104)
+    at Module.load (node:internal/modules/cjs/loader:1441:32)
+    at Function._load (node:internal/modules/cjs/loader:1263:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:237:24)
+    at cjsLoader (node:internal/modules/esm/translators:309:5) {
+  clientVersion: '7.5.0',
+  errorCode: undefined,
+  retryable: undefined
+}
+
+Node.js v22.20.0

@@ -52,11 +52,11 @@ export default async function EditOlympiadPage({ params }: { params: Promise<{ i
     msmtSupported: olympiad.msmtSupported,
     rvpDescription: olympiad.rvpDescription,
     organizerId: olympiad.organizerId,
-    categories: olympiad.categories.map(c => c.id),
+    categories: olympiad.categories.map((c: { id: string }) => c.id),
     coverImage: olympiad.coverImage,
-    gallery: olympiad.media.filter(m => m.purpose === 'GALLERY').map(m => ({ url: m.url, name: m.name || '' })),
-    resultFiles: olympiad.media.filter(m => m.purpose === 'RESULT').map(m => ({ url: m.url, name: m.name || '' })),
-    attachments: olympiad.media.filter(m => m.purpose === 'ATTACHMENT').map(m => ({ url: m.url, name: m.name || '' })),
+    gallery: olympiad.media.filter((m: { purpose: string }) => m.purpose === 'GALLERY').map((m: { url: string; name: string | null }) => ({ url: m.url, name: m.name || '' })),
+    resultFiles: olympiad.media.filter((m: { purpose: string }) => m.purpose === 'RESULT').map((m: { url: string; name: string | null }) => ({ url: m.url, name: m.name || '' })),
+    attachments: olympiad.media.filter((m: { purpose: string }) => m.purpose === 'ATTACHMENT').map((m: { url: string; name: string | null }) => ({ url: m.url, name: m.name || '' })),
     registrationDeadline: olympiad.registrationDeadline
       ? new Date(olympiad.registrationDeadline).toISOString().slice(0, 16)
       : null,
