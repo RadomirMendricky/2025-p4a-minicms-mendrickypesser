@@ -2,16 +2,19 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   typescript: {
-    // !! WARN !!
-    // Povolí Vercelu postavit aplikaci i se smazanými/chybějícími TypeScript definicemi a chybami.
-    // Ideální pro rychlé nasazení.
+    // Allows Vercel to build even with TypeScript type warnings.
     ignoreBuildErrors: true,
   },
   eslint: {
-    // Ignoruje varování kompilátoru (např. nepoužitá proměnná) při buildu.
     ignoreDuringBuilds: true,
   },
-  serverExternalPackages: ["@libsql/client", "@prisma/adapter-libsql", "bcryptjs"],
+  serverExternalPackages: [
+    "@libsql/client",
+    "@prisma/adapter-libsql",
+    "@prisma/adapter-pg",
+    "bcryptjs",
+    "pg",
+  ],
   images: {
     remotePatterns: [
       {
