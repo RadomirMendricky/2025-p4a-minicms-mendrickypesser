@@ -45,9 +45,9 @@ export default async function OlympiadDetailPage({ params }: Props) {
 
   if (!olympiad || olympiad.publishStatus !== 'PUBLISHED') notFound();
 
-  const gallery = olympiad.media.filter(m => m.purpose === 'GALLERY');
-  const results = olympiad.media.filter(m => m.purpose === 'RESULT');
-  const attachments = olympiad.media.filter(m => m.purpose === 'ATTACHMENT');
+  const gallery = olympiad.media.filter((m: any) => m.purpose === 'GALLERY');
+  const results = olympiad.media.filter((m: any) => m.purpose === 'RESULT');
+  const attachments = olympiad.media.filter((m: any) => m.purpose === 'ATTACHMENT');
 
   const hasRounds = olympiad.districtRoundDate || olympiad.regionalRoundDate || olympiad.nationalRoundDate;
   const hasContact = olympiad.contactPerson || olympiad.contactEmail || olympiad.contactPhone;
@@ -123,7 +123,7 @@ export default async function OlympiadDetailPage({ params }: Props) {
               <div className="card-custom p-4 mb-4">
                 <h2 className="h5 fw-bold mb-3">Galerie</h2>
                 <div className="gallery-grid">
-                  {gallery.map(m => (
+                  {gallery.map((m: any) => (
                     <a key={m.id} href={m.url} target="_blank" rel="noopener noreferrer">
                       <img src={m.url} alt={m.name || 'Fotografie'} />
                     </a>
@@ -137,7 +137,7 @@ export default async function OlympiadDetailPage({ params }: Props) {
               <div className="card-custom p-4 mb-4">
                 <h2 className="h5 fw-bold mb-3">Vysledky</h2>
                 <div className="d-flex flex-column gap-2">
-                  {results.map(m => (
+                  {results.map((m: any) => (
                     <a key={m.id} href={m.url} target="_blank" rel="noopener noreferrer" className="btn btn-outline-primary btn-sm text-start">
                       {m.name || 'Dokument'}
                     </a>
@@ -151,7 +151,7 @@ export default async function OlympiadDetailPage({ params }: Props) {
               <div className="card-custom p-4 mb-4">
                 <h2 className="h5 fw-bold mb-3">Prilohy</h2>
                 <div className="d-flex flex-column gap-2">
-                  {attachments.map(m => (
+                  {attachments.map((m: any) => (
                     <a key={m.id} href={m.url} target="_blank" rel="noopener noreferrer" className="btn btn-outline-secondary btn-sm text-start">
                       {m.name || 'Priloha'}
                     </a>

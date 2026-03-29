@@ -64,13 +64,13 @@ export async function createOlympiad(data: OlympiadFormValues) {
       authorId: user.id,
       organizerId: parsed.organizerId || null,
       categories: {
-        connect: parsed.categories.map((id) => ({ id })),
+        connect: parsed.categories.map((id: string) => ({ id })),
       },
       media: {
         create: [
-          ...(parsed.gallery || []).map(g => ({ url: g.url, name: g.name, fileType: 'IMAGE', purpose: 'GALLERY' })),
-          ...(parsed.resultFiles || []).map(r => ({ url: r.url, name: r.name, fileType: 'PDF', purpose: 'RESULT' })),
-          ...(parsed.attachments || []).map(a => ({ url: a.url, name: a.name, fileType: 'PDF', purpose: 'ATTACHMENT' })),
+          ...(parsed.gallery || []).map((g: any) => ({ url: g.url, name: g.name, fileType: 'IMAGE', purpose: 'GALLERY' })),
+          ...(parsed.resultFiles || []).map((r: any) => ({ url: r.url, name: r.name, fileType: 'PDF', purpose: 'RESULT' })),
+          ...(parsed.attachments || []).map((a: any) => ({ url: a.url, name: a.name, fileType: 'PDF', purpose: 'ATTACHMENT' })),
         ],
       },
     },
@@ -130,13 +130,13 @@ export async function updateOlympiad(id: string, data: OlympiadFormValues) {
       coverImage: parsed.coverImage || null,
       organizerId: parsed.organizerId || null,
       categories: {
-        set: parsed.categories.map((catId) => ({ id: catId })),
+        set: parsed.categories.map((catId: string) => ({ id: catId })),
       },
       media: {
         create: [
-          ...(parsed.gallery || []).map(g => ({ url: g.url, name: g.name, fileType: 'IMAGE', purpose: 'GALLERY' })),
-          ...(parsed.resultFiles || []).map(r => ({ url: r.url, name: r.name, fileType: 'PDF', purpose: 'RESULT' })),
-          ...(parsed.attachments || []).map(a => ({ url: a.url, name: a.name, fileType: 'PDF', purpose: 'ATTACHMENT' })),
+          ...(parsed.gallery || []).map((g: any) => ({ url: g.url, name: g.name, fileType: 'IMAGE', purpose: 'GALLERY' })),
+          ...(parsed.resultFiles || []).map((r: any) => ({ url: r.url, name: r.name, fileType: 'PDF', purpose: 'RESULT' })),
+          ...(parsed.attachments || []).map((a: any) => ({ url: a.url, name: a.name, fileType: 'PDF', purpose: 'ATTACHMENT' })),
         ],
       },
     },

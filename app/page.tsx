@@ -109,7 +109,7 @@ export default async function Home() {
               </Link>
             </div>
             <div className="row g-4">
-              {upcoming.map(ol => (
+              {upcoming.map((ol: any) => (
                 <div key={ol.id} className="col-md-6 col-lg-4">
                   <div className="card-custom card-custom-clickable h-100 d-flex flex-column">
                     <div className="p-4 flex-grow-1">
@@ -131,7 +131,7 @@ export default async function Home() {
                         <span className="text-muted small">{ol.edition}. rocnik</span>
                       )}
                       <div className="mt-2 d-flex flex-wrap gap-1">
-                        {ol.categories.slice(0, 3).map(c => (
+                        {ol.categories.slice(0, 3).map((c: any) => (
                           <span key={c.id} className="badge bg-primary small">{c.name}</span>
                         ))}
                       </div>

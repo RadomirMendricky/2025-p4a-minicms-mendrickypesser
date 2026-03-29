@@ -125,7 +125,7 @@ export default async function PublicOlympiadsPage({ searchParams }: { searchPara
       {/* Grid View */}
       {!isList && olympiads.length > 0 && (
         <Row xs={1} md={2} lg={3} className="g-4">
-          {olympiads.map(ol => (
+          {olympiads.map((ol: any) => (
             <Col key={ol.id}>
               <div className="card-custom card-custom-clickable h-100 d-flex flex-column">
                 <div className="p-4 flex-grow-1">
@@ -148,7 +148,7 @@ export default async function PublicOlympiadsPage({ searchParams }: { searchPara
                     {ol.competitionType && <span className="text-muted small">{ol.competitionType}</span>}
                   </div>
                   <div className="d-flex flex-wrap gap-1 mb-2">
-                    {ol.categories.slice(0, 3).map(c => (
+                    {ol.categories.slice(0, 3).map((c: any) => (
                       <Badge key={c.id} bg="primary" className="small">{c.name}</Badge>
                     ))}
                   </div>

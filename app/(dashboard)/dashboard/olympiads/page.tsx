@@ -54,7 +54,7 @@ export default async function OlympiadsListPage() {
                   </td>
                 </tr>
               ) : (
-                olympiads.map(ol => (
+                olympiads.map((ol: any) => (
                   <tr key={ol.id}>
                     <td>
                       <strong>{ol.title}</strong>
@@ -66,7 +66,7 @@ export default async function OlympiadsListPage() {
                     <td><PublishStatusBadge status={ol.publishStatus} /></td>
                     <td>
                       <div className="d-flex flex-wrap gap-1">
-                        {ol.categories.slice(0, 2).map(c => (
+                        {ol.categories.slice(0, 2).map((c: any) => (
                           <Badge key={c.id} bg="primary" className="small">{c.name}</Badge>
                         ))}
                       </div>
