@@ -7,10 +7,10 @@ import Credentials from "next-auth/providers/credentials"
 import bcrypt from "bcryptjs"
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
-  adapter: PrismaAdapter(prisma),
+  adapter: process.env.DATABASE_URL ? PrismaAdapter(prisma) : undefined,
   providers: [
-    GitHub,
-    Google,
+    GitHub({}),
+    Google({}),
     Credentials({
       credentials: {
         email: { label: "Email", type: "email" },
