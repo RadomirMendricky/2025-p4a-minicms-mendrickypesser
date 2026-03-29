@@ -117,10 +117,13 @@ async function main() {
   console.log("Seeding database...")
 
   // 1. Create admin user
-  const hashedPassword = await bcrypt.hash("Heslo123", 10)
+  const adminPassword = process.env.ADMIN_PASSWORD || "Heslo123" // Výchozí pouze pro lokální testování
+  const hashedPassword = await bcrypt.hash(adminPassword, 10)
   const admin = await prisma.user.upsert({
     where: { email: "admin@olympiady.cz" },
-    update: {},
+    update: {
+      password: hashedPassword,
+    },
     create: {
       email: "admin@olympiady.cz",
       name: "Hlavni Koordinator",
